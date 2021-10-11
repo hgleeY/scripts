@@ -1,9 +1,6 @@
 name: CSI2115 Linux Kernel
 
-on:
-  push:
-    paths:
-      - 'linux/**'
+on: [push]
 
 jobs:
   build:
