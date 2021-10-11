@@ -10,7 +10,7 @@ jobs:
       - name: Build Linux Kernel
         shell: bash
         run: |
-          wget "https://github.com/hgleeY/linux/archive/$GITHUB_SHA.zip" -o .
+          wget "https://github.com/hgleeY/linux/archive/$GITHUB_SHA.zip"
           unzip "linux-$GITHUB_SHA.zip"
           ./build-linux.sh "linux-$GITHUB_SHA" tinyconfig
 
