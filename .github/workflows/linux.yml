@@ -10,7 +10,7 @@ jobs:
       - name: Build Linux Kernel
         shell: bash
         run: |
-          COMMIT_NO = $(git rev-parse HEAD:linux)
+          COMMIT_NO=$(git rev-parse HEAD:linux)
           wget "https://github.com/hgleeY/linux/archive/$COMMIT_NO.zip"
           unzip -q  "linux-$COMMIT_NO.zip"
           ./build-linux.sh "linux-$COMMIT_NO" tinyconfig
