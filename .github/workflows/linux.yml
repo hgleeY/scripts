@@ -1,6 +1,9 @@
 name: CSI2115 Linux Kernel
 
-on: [push]
+on:
+  push:
+    paths:
+      - 'linux'
 
 jobs:
   build:
@@ -10,9 +13,7 @@ jobs:
       - name: Build Linux Kernel
         shell: bash
         run: |
-          wget "https://github.com/hgleeY/linux/archive/$COMMIT_NO.zip"
-          unzip "linux-$COMMIT_NO.zip"
-          ./build-linux.sh "linux-$COMMIT_NO" tinyconfig
-        env:
-          COMMIT_NO: $(git submodule | awk '{print $1}')
+          wget "https://github.com/hgleeY/linux/archive/$(git rev-parse HEAD:linux).zip"
+          unzip "linux-$(git rev-parse HEAD:linux).zip"
+          ./build-linux.sh "linux-$(git rev-parse HEAD:linux)" tinyconfig
 
