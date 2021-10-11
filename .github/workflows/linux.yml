@@ -1,0 +1,19 @@
+name: CSI2115 Linux Kernel
+
+on:
+        push:
+                paths:
+                        - 'linux/**'
+
+jobs:
+        build:
+                runs-on: ubuntu-20.04
+
+                steps:
+                        - name: Build Linux Kernel
+                          shell: bash
+                          run: |
+                                  wget "https://github.com/hgleeY/linux/archive/$GITHUB_SHA.zip" -o .
+                                  unzip "linux-$GITHUB_SHA.zip"
+                                  ./build-linux.sh "linux-$GITHUB_SHA" tinyconfig
+
