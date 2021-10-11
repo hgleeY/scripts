@@ -3,7 +3,7 @@ name: CSI2115 Linux Kernel
 on:
   push:
     paths:
-      - 'linux'
+      - '*'
 
 jobs:
   build:
@@ -14,7 +14,7 @@ jobs:
         shell: bash
         run: |
           COMMIT_NO = $(git rev-parse HEAD:linux)
-          wget "https://github.com/hgleeY/linux/archive/${COMMIT_NO}.zip"
-          unzip -q  "linux-${COMMIT_NO}.zip"
-          ./build-linux.sh "linux-${COMMIT_NO}" tinyconfig
+          wget "https://github.com/hgleeY/linux/archive/$COMMIT_NO.zip"
+          unzip -q  "linux-$COMMIT_NO.zip"
+          ./build-linux.sh "linux-$COMMIT_NO" tinyconfig
 
