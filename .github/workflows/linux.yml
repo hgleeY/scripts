@@ -4,9 +4,9 @@ on: [push]
 
 jobs:
   build:
-    steps:
-      - uses: actions/checkout@v2
+    runs-on: ubuntu-20.04
 
+    steps:
       - name: Build Linux Kernel
         shell: bash
         run: |
