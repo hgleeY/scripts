@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     steps:
+      - uses: actions/checkout@v2
+
       - name: Build Linux Kernel
         shell: bash
         run: |
