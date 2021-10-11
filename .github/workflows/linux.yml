@@ -7,11 +7,15 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - name: Build Linux Kernel
-        shell: bash
-        run: |
-          COMMIT_NO=$(git rev-parse HEAD:linux)
-          wget "https://github.com/hgleeY/linux/archive/$COMMIT_NO.zip"
-          unzip -q  "linux-$COMMIT_NO.zip"
-          ./build-linux.sh "linux-$COMMIT_NO" tinyconfig
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Download linux
+        run: wget https://github.com/hgleeY/linux/archive/$(git rev-parse HEAD:linux).zip
+
+      - name: Unzip linux
+        run: unzip -q linux-$(git rev-parse HEAD:linux).zip
+
+      - name: Build linux
+        run: ./build-linux.sh linux-$(git rev-parse HEAD:linux) tinyconfig
 
