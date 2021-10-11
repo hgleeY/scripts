@@ -14,5 +14,5 @@ jobs:
           unzip "linux-$COMMIT_NO.zip"
           ./build-linux.sh "linux-$COMMIT_NO" tinyconfig
         env:
-          COMMIT_NO: git submodule | awk '{print $1}'
+          COMMIT_NO: $(git submodule | awk '{print $1}')
 
